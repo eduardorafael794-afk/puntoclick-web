@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PuntoClick Studio 3D · Impresión 3D y páginas web en Punto Fijo</title>
+<meta name="description" content="Impresión 3D para negocios y regalos en Punto Fijo: llaveros, logos luminosos, letras corpóreas, placas y habladores de pago móvil. Páginas web para tu negocio. Envíos a toda Venezuela.">
+<meta property="og:title" content="PuntoClick Studio 3D">
+<meta property="og:description" content="Tu marca, en 3D y en línea. Impresión 3D y páginas web en Punto Fijo, con envíos a toda Venezuela.">
+<meta property="og:image" content="img/logo-full.png">
+<meta name="theme-color" content="#06080d">
+<link rel="icon" href="img/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06080d;--panel:#0d111a;--panel-2:#131926;--line:#1d2534;--line-2:#2a3447;
+  --text:#eef2f8;--muted:#929cb0;--blue:#2f8cff;--blue-2:#7cc0ff;--glow:rgba(47,140,255,.42);
+  --wa:#22b45e;--violet:#b65cff;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:22px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:radial-gradient(ellipse at 50% 0%,#000 25%,transparent 75%)}
+img{max-width:100%;display:block}
+a{color:inherit}
+p{margin:0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-family:var(--display);line-height:1.06;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:800}
+h3{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:100px 0}
+.tag{display:inline-flex;align-items:center;gap:9px;font:700 .76rem var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:16px}
+.tag::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}
+.sub{color:var(--muted);max-width:40em;margin-top:14px;font-size:1.06rem}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.layers{color:transparent;background:repeating-linear-gradient(180deg,#7cc0ff 0 3px,#2f8cff 3px 6px);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 0 22px var(--glow))}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 22px;border-radius:999px;font:700 1rem var(--body);text-decoration:none;border:1px solid transparent;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s;white-space:nowrap;cursor:pointer}
+.btn svg{width:19px;height:19px;flex:none}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 28px rgba(34,180,94,.28)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(34,180,94,.42)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 8px 28px var(--glow)}
+.btn-blue:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--line-2);color:var(--text);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--blue);box-shadow:0 0 0 4px rgba(47,140,255,.12)}
+.btn-sm{padding:9px 15px;font-size:.9rem}
+
+/* header */
+header{position:sticky;top:0;z-index:40;background:rgba(6,8,13,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:70px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font:700 1rem/1 var(--display)}
+.brand img{width:40px;height:40px;border-radius:10px;background:#fff;padding:2px}
+.brand small{display:block;font:700 .66rem var(--body);letter-spacing:.2em;color:var(--blue);margin-top:5px}
+nav{display:flex;gap:24px;font-weight:600;font-size:.95rem}
+nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+nav a:hover,nav a.on{color:var(--text)}
+nav a.hl{color:var(--blue-2)}
+.bar-cta{display:flex;gap:8px;align-items:center}
+@media (max-width:980px){nav{display:none}}
+.qnav{display:none}
+@media (max-width:980px){.qnav{display:flex;gap:8px;overflow-x:auto;padding:0 20px 12px;scrollbar-width:none}.qnav::-webkit-scrollbar{display:none}
+ .qnav a{flex:none;text-decoration:none;font:600 .85rem var(--body);color:var(--muted);border:1px solid var(--line-2);border-radius:999px;padding:6px 13px}}
+
+/* hero */
+.hero{position:relative;padding:76px 0 70px}
+.hero::after{content:"";position:absolute;right:-12%;top:-20%;width:62vw;height:62vw;max-width:820px;max-height:820px;z-index:-1;background:radial-gradient(circle,rgba(47,140,255,.26),transparent 62%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(2.8rem,7.4vw,5.8rem);font-weight:800;letter-spacing:-.045em;line-height:.96}
+.hero .sub{font-size:1.15rem;margin:24px 0 30px}
+.print{animation:print 1.3s cubic-bezier(.2,.7,.2,1) both}
+@keyframes print{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.services{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:34px;max-width:620px}
+.svc{display:block;text-decoration:none;padding:18px 18px 16px;border-radius:18px;background:var(--panel);border:1px solid var(--line);transition:border-color .25s,transform .25s}
+.svc:hover{border-color:rgba(47,140,255,.6);transform:translateY(-2px)}
+.svc b{display:flex;align-items:center;gap:8px;font:700 1rem var(--display);letter-spacing:-.01em}
+.svc b i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;background:rgba(47,140,255,.14);color:var(--blue-2);font-style:normal}
+.svc b i svg{width:17px;height:17px}
+.svc span{display:block;color:var(--muted);font-size:.92rem;margin-top:8px}
+.svc em{font-style:normal;color:var(--text);font-weight:700}
+.loc{margin-top:22px;display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.9rem}
+.loc span{display:inline-flex;align-items:center;gap:7px}
+.loc span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--wa)}
+.stack{position:relative;aspect-ratio:1/1.06}
+.stack figure{position:absolute;margin:0;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px rgba(0,0,0,.5);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.stack img{width:100%;height:100%;object-fit:cover}
+.stack .a{inset:0 24% 20% 0;transform:rotate(-4deg)}
+.stack .b{width:52%;height:46%;right:0;top:3%;transform:rotate(5deg);box-shadow:0 0 0 1px rgba(47,140,255,.45),0 0 60px var(--glow)}
+.stack .c{width:52%;height:44%;right:3%;bottom:0;transform:rotate(-2deg)}
+.stack:hover .a{transform:rotate(-6deg) translateX(-8px)}
+.stack:hover .b{transform:rotate(8deg) translateY(-8px)}
+@media (max-width:920px){.hero-grid{grid-template-columns:1fr}.hero{padding-top:36px}.stack{max-width:500px;width:100%;margin:10px auto 0}}
+@media (max-width:520px){.services{grid-template-columns:1fr}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);padding:22px 0;overflow:hidden;background:rgba(13,17,26,.6)}
+.mq-label{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:14px}
+.track{display:flex;gap:52px;width:max-content;animation:slide 44s linear infinite}
+.track span{font:700 1.1rem var(--display);color:#c7cfdd;white-space:nowrap;display:inline-flex;align-items:center;gap:52px}
+.track span::after{content:"✦";color:var(--blue);font-size:.8rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee:hover .track{animation-play-state:paused}
+
+/* bento (3D for business) */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:240px;gap:14px}
+.tile{position:relative;border-radius:var(--r);overflow:hidden;background:var(--panel);border:1px solid var(--line);isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;text-decoration:none;transition:border-color .3s,transform .3s}
+.tile:hover{border-color:rgba(47,140,255,.6);transform:translateY(-3px)}
+.tile>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile:hover>img{transform:scale(1.05)}
+.tile::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,8,13,0) 25%,rgba(6,8,13,.72) 58%,rgba(6,8,13,.97) 100%)}
+.tile p{color:#c3cad8;font-size:.95rem;margin-top:8px;max-width:30em}
+.price{display:inline-block;margin-top:12px;font:700 .86rem var(--body);color:#fff;background:rgba(47,140,255,.2);border:1px solid rgba(47,140,255,.5);padding:5px 12px;border-radius:999px;width:max-content}
+.chip{position:absolute;top:18px;left:18px;font:700 .72rem var(--body);letter-spacing:.06em;background:rgba(6,8,13,.7);border:1px solid rgba(255,255,255,.15);padding:5px 11px;border-radius:999px;backdrop-filter:blur(6px)}
+.t-big{grid-column:span 2;grid-row:span 2}
+.t-big h3{font-size:clamp(1.4rem,2.6vw,2rem)}
+.t-wide{grid-column:span 2}
+@media (max-width:900px){.bento{grid-template-columns:1fr 1fr;grid-auto-rows:220px}}
+@media (max-width:560px){.bento{grid-template-columns:1fr;grid-auto-rows:250px}.t-big,.t-wide{grid-column:span 1}.t-big{grid-row:span 1;min-height:330px}}
+
+.ideas{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.idea{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.idea small{font:700 .72rem var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--blue-2)}
+.idea p{color:var(--muted);font-size:.93rem;flex:1}
+.idea a{align-self:flex-start;margin-top:6px}
+@media (max-width:1000px){.ideas{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.ideas{grid-template-columns:1fr}}
+
+/* prices */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pc{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column}
+.pc.star{background:linear-gradient(160deg,#0f2443,#0a111e);border-color:rgba(47,140,255,.55);box-shadow:0 0 50px rgba(47,140,255,.12)}
+.pc .save{position:absolute;top:18px;right:18px;font:700 .72rem var(--body);background:var(--wa);color:#fff;padding:4px 10px;border-radius:999px}
+.pc p{color:var(--muted);font-size:.94rem;margin-top:8px;flex:1}
+.pc .amt{font:800 2.1rem/1 var(--display);margin:20px 0 4px;letter-spacing:-.03em}
+.pc .amt small{font:600 .85rem var(--body);color:var(--muted);letter-spacing:0;margin-left:4px}
+.pc .btn{margin-top:16px;align-self:flex-start}
+.custom{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:22px 26px;border:1px dashed rgba(47,140,255,.5);border-radius:20px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:.88rem;border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;color:#cfd6e3}
+.note{color:var(--muted);font-size:.9rem;margin-top:16px}
+@media (max-width:900px){.prices{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.prices{grid-template-columns:1fr}}
+
+/* WEB section */
+.web{position:relative;background:linear-gradient(180deg,#081224 0%,#060a14 100%);border-block:1px solid rgba(47,140,255,.28);overflow:hidden;isolation:isolate}
+.web::before{content:"";position:absolute;left:50%;top:-260px;transform:translateX(-50%);width:1000px;height:560px;z-index:-1;background:radial-gradient(ellipse,rgba(47,140,255,.3),transparent 65%)}
+.web .head h2{max-width:13em}
+.web-includes{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.web-includes span{display:inline-flex;align-items:center;gap:7px;font-size:.9rem;font-weight:600;border:1px solid rgba(47,140,255,.35);background:rgba(47,140,255,.08);border-radius:999px;padding:7px 13px}
+.web-includes span::before{content:"✓";color:var(--blue-2);font-weight:800}
+.demos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px}
+.demo{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;text-decoration:none;transition:transform .3s,border-color .3s,box-shadow .3s}
+.demo:hover{transform:translateY(-5px);border-color:rgba(47,140,255,.65);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.shot{position:relative;margin:14px 14px 0;border-radius:14px;overflow:hidden;border:1px solid #273046;background:#0b0f18}
+.shot .top{display:flex;align-items:center;gap:6px;padding:9px 11px;background:#151b28}
+.shot .top i{width:8px;height:8px;border-radius:50%;background:#3a4560}
+.shot .top span{margin-left:8px;font-size:.7rem;color:var(--muted);background:#0b0f18;border-radius:6px;padding:3px 9px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shot img.real{width:100%;height:200px;object-fit:cover;object-position:top center}
+.view{height:200px;padding:18px;display:flex;flex-direction:column;gap:9px;position:relative;overflow:hidden}
+.view .k{font:700 .55rem var(--body);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.view .t{font:800 1.08rem/1.08 var(--display);letter-spacing:-.02em;max-width:78%}
+.view .bt{margin-top:auto;align-self:flex-start;font:700 .62rem var(--body);padding:6px 11px;border-radius:999px}
+.view .ln{height:6px;border-radius:4px;background:currentColor;opacity:.22}
+/* demo looks */
+.v-anny{background:linear-gradient(145deg,#fff6ef,#ffe3d6);color:#2b1d34}
+.v-anny .k{color:#c2416b}.v-anny .t em{font-style:normal;color:#c2416b}
+.v-anny .bt{background:#2b1d34;color:#fff}
+.v-anny .av{position:absolute;right:-18px;bottom:-18px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#f6b8a8,#d9748f 70%);opacity:.9}
+.v-power{background:radial-gradient(circle at 85% 20%,#ff8a3d 0,transparent 45%),linear-gradient(150deg,#1a0f08,#2b1208);color:#fff}
+.v-power .k{color:#ffb36b}.v-power .t em{font-style:normal;color:#ff8a3d}
+.v-power .bt{background:#ff6a1a;color:#fff}
+.v-power .wk{display:flex;gap:4px;margin-top:2px}.v-power .wk b{width:16px;height:16px;border-radius:4px;background:rgba(255,138,61,.25);border:1px solid rgba(255,138,61,.6)}
+.v-yupi{background:radial-gradient(circle at 80% 10%,rgba(124,77,255,.55),transparent 50%),radial-gradient(circle at 10% 100%,rgba(0,229,160,.35),transparent 50%),#111;color:#fff}
+.v-yupi .k{color:#7cffc4}.v-yupi .t em{font-style:normal;color:#b49bff}
+.v-yupi .bt{background:#7c4dff;color:#fff}
+.v-yupi .gr{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px}
+.v-yupi .gr b{aspect-ratio:1;border-radius:8px;background:linear-gradient(140deg,#262636,#1a1a24);border:1px solid #333}
+.v-yupi .gr b:nth-child(2){background:linear-gradient(140deg,#3b2a73,#1d1438)}
+.v-yupi .gr b:nth-child(3){background:linear-gradient(140deg,#0f5b45,#0c2a22)}
+.demo-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.demo-body small{font:700 .72rem var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-2)}
+.demo-body p{color:var(--muted);font-size:.94rem;flex:1}
+.demo-body ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.demo-body li{font-size:.78rem;font-weight:600;border:1px solid var(--line-2);border-radius:999px;padding:4px 10px;color:#cfd6e3}
+.demo-go{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--blue-2);margin-top:6px}
+.demo-go svg{width:16px;height:16px;transition:transform .25s}
+.demo:hover .demo-go svg{transform:translate(3px,-3px)}
+.web-cta{margin-top:22px;display:grid;grid-template-columns:1.3fr 1fr;gap:18px;align-items:center;background:rgba(13,17,26,.7);border:1px solid var(--line-2);border-radius:var(--r);padding:28px 30px}
+.web-cta p{color:var(--muted);margin-top:8px}
+.web-cta .ctas{justify-content:flex-end}
+@media (max-width:980px){.demos{grid-template-columns:1fr 1fr}.web-cta{grid-template-columns:1fr}.web-cta .ctas{justify-content:flex-start}}
+@media (max-width:640px){.demos{grid-template-columns:1fr}}
+
+/* gallery */
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filters button{font:600 .88rem var(--body);color:var(--muted);background:transparent;border:1px solid var(--line-2);padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .2s}
+.filters button:hover{color:var(--text)}
+.filters button[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 0 20px var(--glow)}
+.gal{columns:4 230px;column-gap:12px}
+.gal button{all:unset;display:block;cursor:zoom-in;margin-bottom:12px;break-inside:avoid;border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line);width:100%}
+.gal button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.gal button[hidden]{display:none}
+.gal img{width:100%;transition:transform .5s}
+.gal button:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:10px;bottom:10px;background:rgba(6,8,13,.78);backdrop-filter:blur(6px);font-size:.8rem;font-weight:600;padding:4px 10px;border-radius:999px}
+.ig-strip{margin-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px 22px}
+.ig-strip p{color:var(--muted)}
+
+/* process + shipping */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:24px;counter-increment:s}
+.step::before{content:"0" counter(s);display:block;font:800 2.6rem/1 var(--display);color:transparent;-webkit-text-stroke:1px #4f5f80;margin-bottom:18px}
+.step:hover::before{-webkit-text-stroke:1px var(--blue);text-shadow:0 0 30px var(--glow)}
+.step p{color:var(--muted);font-size:.94rem;margin-top:8px}
+.ship{margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ship>div{background:var(--panel-2);border:1px solid var(--line);border-radius:18px;padding:22px}
+.ship p{color:var(--muted);font-size:.92rem;margin:6px 0 12px}
+.proof{margin-top:14px;display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:16px}
+.proof img{border-radius:14px;max-height:320px;width:100%;object-fit:cover}
+.proof p{color:var(--muted);margin-top:10px}
+.dims{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.dims span{font:600 .85rem var(--body);border:1px solid var(--line);border-radius:10px;padding:7px 11px;background:var(--panel-2)}
+.dims b{color:var(--blue);font-weight:800}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.ship{grid-template-columns:1fr}.proof{grid-template-columns:1fr}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+/* gamer */
+.gamer{position:relative;border-block:1px solid rgba(182,92,255,.25);background:radial-gradient(ellipse at 15% 0%,rgba(182,92,255,.22),transparent 55%),radial-gradient(ellipse at 90% 100%,rgba(47,224,255,.12),transparent 50%),#07050d}
+.gamer .tag{color:#d9a8ff}
+.g-title{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:800;letter-spacing:-.04em;line-height:.98}
+.rgb{background:linear-gradient(90deg,#b65cff,#2fe0ff,#ff4fd8,#b65cff);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rgb 6s linear infinite}
+@keyframes rgb{to{background-position:300% 0}}
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.g-card{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 20px;border-radius:16px;background:linear-gradient(180deg,#120d1f,#0b0913);border:1px solid #2a2140;text-decoration:none;transition:border-color .25s,transform .25s}
+.g-card:hover{border-color:rgba(182,92,255,.7);transform:translateY(-2px)}
+.g-card h3{font-size:.98rem}
+.g-card p{color:#a89fbe;font-size:.86rem;margin-top:4px}
+.g-card b{font:800 .95rem var(--display);color:#e6cfff;white-space:nowrap}
+.g-card.feat{grid-column:span 3;background:linear-gradient(120deg,#1b1030,#0b0913 60%);padding:26px}
+.neon{font:800 clamp(1.2rem,3vw,1.8rem) var(--display);color:#fff;text-shadow:0 0 6px #b65cff,0 0 18px #b65cff,0 0 40px #2fe0ff;letter-spacing:.02em}
+.bambu{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;border-radius:18px;border:1px dashed rgba(182,92,255,.55)}
+.bambu ol{margin:8px 0 0;padding-left:20px;color:#b9b1cc;font-size:.93rem}
+@media (max-width:900px){.g-grid{grid-template-columns:1fr 1fr}.g-card.feat{grid-column:span 2}}
+@media (max-width:560px){.g-grid{grid-template-columns:1fr}.g-card.feat{grid-column:span 1;flex-direction:column;align-items:flex-start}}
+
+/* gifts + custom */
+.duo{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.duo .tile{min-height:380px}
+.idea-box{background:radial-gradient(ellipse at 80% 10%,rgba(47,140,255,.3),transparent 60%),linear-gradient(140deg,#0b1830,#070a12);border:1px solid rgba(47,140,255,.35);border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:14px}
+.idea-box ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.idea-box li{display:flex;gap:10px;color:#cfd6e3}
+.idea-box li::before{content:"✦";color:var(--blue)}
+.idea-box .btn{margin-top:auto;align-self:flex-start}
+@media (max-width:900px){.duo{grid-template-columns:1fr}}
+
+/* tech */
+.tech{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.tech div{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px}
+.tech h3{font-size:.95rem;margin-bottom:6px}
+.tech p{color:var(--muted);font-size:.9rem}
+.soon{margin-top:12px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;border:1px dashed rgba(47,140,255,.5);border-radius:18px;padding:20px 24px}
+.soon>div{flex:1;min-width:240px}
+.soon p{color:var(--muted);margin-top:4px}
+.pill{font:700 .72rem var(--body);letter-spacing:.1em;text-transform:uppercase;background:var(--blue);color:#fff;padding:6px 12px;border-radius:999px}
+@media (max-width:1000px){.tech{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.tech{grid-template-columns:1fr}}
+
+/* footer */
+footer{padding:110px 0 100px;border-top:1px solid var(--line);position:relative;overflow:hidden;isolation:isolate}
+footer::before{content:"";position:absolute;left:50%;top:0;transform:translate(-50%,-50%);width:900px;height:500px;background:radial-gradient(ellipse,rgba(47,140,255,.22),transparent 65%);z-index:-1}
+.cta-big{text-align:center}
+.cta-big h2{font-size:clamp(2.4rem,7vw,5rem)}
+.cta-big .sub{margin:18px auto 30px}
+.cta-big .ctas{justify-content:center}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:28px;margin-top:84px;padding-top:34px;border-top:1px solid var(--line);align-items:center}
+.foot .id{display:flex;gap:16px;align-items:center}
+.foot .id img{width:68px;border-radius:50%}
+.foot .id p{color:var(--muted);font-size:.9rem;margin-top:4px}
+.foot h4{margin:0 0 6px;font:700 .76rem var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.foot a{font-weight:700;text-decoration:none}
+.foot a:hover{color:var(--blue)}
+@media (max-width:860px){.foot{grid-template-columns:1fr 1fr}.foot .id{grid-column:span 2}}
+@media (max-width:520px){.foot{grid-template-columns:1fr}.foot .id{grid-column:span 1}}
+
+.float{position:fixed;right:18px;bottom:18px;z-index:50}
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,960px)}
+dialog::backdrop{background:rgba(3,4,8,.92);backdrop-filter:blur(4px)}
+dialog img{max-height:84vh;width:auto;margin:0 auto;border-radius:14px}
+dialog p{color:#fff;text-align:center;margin-top:12px;font-weight:600}
+#close{position:fixed;top:16px;right:16px;background:#fff;color:#000;border:0;border-radius:999px;padding:9px 16px;font:700 .9rem var(--body);cursor:pointer}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" aria-label="PuntoClick Studio 3D, inicio">
+      <img src="img/logo-mark.png" alt="">
+      <span>PuntoClick<small>STUDIO 3D</small></span>
+    </a>
+    <nav aria-label="Secciones">
+      <a href="#negocios">Impresión 3D</a>
+      <a href="#web" class="hl">Páginas web</a>
+      <a href="#precios">Precios</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#gamer">Zona Gamer</a>
+      <a href="/catalogo/">Catálogo</a>
+    </nav>
+    <div class="bar-cta">
+      <a class="btn btn-wa btn-sm wa" data-msg="Hola PuntoClick, quiero cotizar un trabajo." href="https://wa.me/584246798857">Cotizar</a>
+    </div>
+  </div>
+  <div class="qnav" aria-label="Secciones">
+    <a href="#negocios">Impresión 3D</a><a href="#web">Páginas web</a><a href="#precios">Precios</a><a href="#trabajos">Trabajos</a><a href="#gamer">Gamer</a><a href="/catalogo/">Catálogo</a><a href="#envios">Envíos</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">Punto Fijo · Envíos a toda Venezuela</span>
+        <h1>Tu marca,<br><span class="layers print">en 3D</span> y en línea.</h1>
+        <p class="sub">Imprimimos en 3D tu logo, tus regalos y tus ideas, y hacemos la página web de tu negocio. Te enseñamos el diseño antes de empezar.</p>
+        <div class="ctas">
+          <a class="btn btn-wa wa" data-msg="Hola PuntoClick, quiero cotizar un trabajo." href="https://wa.me/584246798857">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+            Cotiza por WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="/catalogo/">Ver catálogo</a>
+        </div>
+        <div class="services">
+          <a class="svc" href="#negocios">
+            <b><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></svg></i>Impresión 3D</b>
+            <span>Llaveros <em>$5</em> · Docena <em>$20</em> · Pago móvil <em>$20</em></span>
+          </a>
+          <a class="svc" href="#web">
+            <b><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg></i>Páginas web</b>
+            <span>Mira <em>páginas reales</em> que hemos hecho</span>
+          </a>
+        </div>
+      </div>
+      <div class="stack" aria-hidden="true">
+        <figure class="a"><img src="img/letras-farmasi.jpg" alt=""></figure>
+        <figure class="b"><img src="img/exhibidor-cachapas.jpg" alt=""></figure>
+        <figure class="c"><img src="img/llavero-otronivel.jpg" alt=""></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-label="Marcas que han confiado en nosotros">
+    <p class="mq-label">Marcas que ya confiaron en PuntoClick</p>
+    <div class="track">
+      <span>Amaretto Café Licor</span><span>Otro Nivel</span><span>FarmaSí</span><span>Cachapas La Llanera</span><span>Nene Barber Studio</span><span>Casapiedra</span><span>Gema Labs</span><span>Academia Bailaora</span><span>Dra. Dayana Chirinos</span><span>Recargas Yupi</span><span>Anny Hernández</span>
+      <span aria-hidden="true">Amaretto Café Licor</span><span aria-hidden="true">Otro Nivel</span><span aria-hidden="true">FarmaSí</span><span aria-hidden="true">Cachapas La Llanera</span><span aria-hidden="true">Nene Barber Studio</span><span aria-hidden="true">Casapiedra</span><span aria-hidden="true">Gema Labs</span><span aria-hidden="true">Academia Bailaora</span><span aria-hidden="true">Dra. Dayana Chirinos</span><span aria-hidden="true">Recargas Yupi</span><span aria-hidden="true">Anny Hernández</span>
+    </div>
+  </div>
+
+  <!-- 3D NEGOCIOS -->
+  <section id="negocios">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Impresión 3D para tu negocio</span>
+          <h2>Que tu marca se vea<br>en todas partes</h2>
+          <p class="sub">En la fachada, en el mostrador, en el escritorio y en el bolsillo de tus clientes.</p>
+        </div>
+        <a class="btn btn-wa wa" data-msg="Hola PuntoClick, quiero cotizar para mi empresa." href="https://wa.me/584246798857">Cotiza para tu empresa</a>
+      </div>
+
+      <div class="bento">
+        <a class="tile t-big wa" data-msg="Hola PuntoClick, quiero cotizar un logo luminoso / letras corpóreas." href="https://wa.me/584246798857">
+          <img src="img/exhibidor-cachapas-2.jpg" alt="Exhibidor de Cachapas La Llanera con cabecera luminosa" loading="lazy">
+          <span class="chip">El más pedido por empresas</span>
+          <h3>Logos luminosos y letras corpóreas</h3>
+          <p>Tu logo con luz LED para fachadas, recepciones y exhibidores. Letras en relieve para señalizar tu local.</p>
+          <span class="price">Logo luminoso desde $25</span>
+        </a>
+        <a class="tile t-wide wa" data-msg="Hola PuntoClick, quiero cotizar llaveros con el logo de mi empresa." href="https://wa.me/584246798857">
+          <img src="img/llavero-amaretto.jpg" alt="Llaveros de Amaretto Café Licor en la cama de impresión" loading="lazy" style="object-position:center 60%">
+          <span class="chip">Al mayor</span>
+          <h3>Llaveros corporativos</h3>
+          <p>Tu logo en relieve y a varios colores, listos para regalar.</p>
+          <span class="price">La docena en $20</span>
+        </a>
+        <a class="tile wa" data-msg="Hola PuntoClick, quiero cotizar un hablador de pago móvil." href="https://wa.me/584246798857">
+          <img src="img/hablador-dayana.jpg" alt="Hablador de pago móvil rosado para la consulta de la Dra. Dayana Chirinos" loading="lazy">
+          <h3>Habladores de pago móvil</h3>
+          <span class="price">Desde $20</span>
+        </a>
+        <a class="tile wa" data-msg="Hola PuntoClick, quiero cotizar una placa de escritorio." href="https://wa.me/584246798857">
+          <img src="img/placa-abogado.jpg" alt="Placa de escritorio para abogado" loading="lazy">
+          <h3>Placas de escritorio</h3>
+        </a>
+      </div>
+
+      <div class="ideas">
+        <div class="idea"><small>Regalo corporativo</small><h3>Calendario perpetuo</h3><p>Marcas el día, la fecha y el mes, y sirve todos los años. Con el logo de tu empresa en la base.</p><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero cotizar calendarios perpetuos con el logo de mi empresa. Cantidad:" href="https://wa.me/584246798857">Cotizar</a></div>
+        <div class="idea"><small>Cafés · consultorios · locales</small><h3>Placa QR de Wi-Fi</h3><p>Tus clientes escanean y se conectan sin pedir la clave. También puede llevar tu Instagram o tu web.</p><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero cotizar una placa QR de Wi-Fi para mi negocio." href="https://wa.me/584246798857">Cotizar</a></div>
+        <div class="idea"><small>Restaurantes · bares</small><h3>Menú QR de mesa</h3><p>El cliente escanea y ve tu menú en el celular. Por detrás, tu logo en relieve.</p><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero cotizar habladores de mesa con menú QR. Número de mesas:" href="https://wa.me/584246798857">Cotizar</a></div>
+        <div class="idea"><small>Torneos · graduaciones</small><h3>Medallas personalizadas</h3><p>Con el nombre del evento, el logo y el año. Para premiaciones, escuelas y empresas.</p><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero cotizar medallas personalizadas. Evento y cantidad:" href="https://wa.me/584246798857">Cotizar</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIOS -->
+  <section id="precios" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Lista de precios</span>
+          <h2>Precios claros,<br>sin sorpresas</h2>
+          <p class="sub">Los más pedidos con precio fijo. Para piezas a medida te mandamos el precio junto con la vista previa del diseño.</p>
+        </div>
+      </div>
+      <div class="prices">
+        <div class="pc"><h3>Llavero personalizado</h3><p>Con tu nombre, tu logo o tu diseño, a varios colores.</p><div class="amt">$5<small>por unidad</small></div><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero un llavero personalizado ($5)." href="https://wa.me/584246798857">Pedir</a></div>
+        <div class="pc star"><span class="save">Ahorras $40</span><h3>Docena de llaveros</h3><p>12 llaveros personalizados. Sale a menos de $1,70 cada uno.</p><div class="amt">$20<small>las 12 piezas</small></div><a class="btn btn-blue btn-sm wa" data-msg="Hola PuntoClick, quiero una docena de llaveros personalizados ($20)." href="https://wa.me/584246798857">Pedir la docena</a></div>
+        <div class="pc"><h3>Hablador de pago móvil</h3><p>Con los datos, el logo y los colores de tu negocio. Doble (dos cuentas): $25.</p><div class="amt">$20<small>sencillo</small></div><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero un hablador de pago móvil." href="https://wa.me/584246798857">Pedir</a></div>
+        <div class="pc"><h3>Logo luminoso</h3><p>Tu marca encendida con luz LED. El precio final depende del tamaño.</p><div class="amt">$25<small>desde</small></div><a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, quiero cotizar un logo luminoso (desde $25)." href="https://wa.me/584246798857">Cotizar</a></div>
+        <div class="pc"><h3>Accesorios gamer</h3><p>Soportes para controles y audífonos, letreros con tu gamertag y más.</p><div class="amt">$5<small>desde</small></div><a class="btn btn-ghost btn-sm" href="#gamer">Ver Zona Gamer</a></div>
+        <div class="pc"><h3>Página web</h3><p>Para tu negocio, con tu logo, tus productos y botón de WhatsApp. Precio según lo que necesites.</p><div class="amt" style="font-size:1.5rem">A tu medida</div><a class="btn btn-ghost btn-sm" href="#web">Ver ejemplos</a></div>
+      </div>
+      <div class="custom">
+        <div><h3>Precio según tamaño y diseño</h3>
+          <div class="chips" style="margin-top:12px"><span>Letras corpóreas</span><span>Placas de escritorio</span><span>Cajas de luz</span><span>Exhibidores</span><span>Calendarios con logo</span><span>Placas QR de Wi-Fi</span><span>Menús QR</span><span>Medallas</span><span>Repuestos a medida</span></div>
+        </div>
+        <a class="btn btn-wa wa" data-msg="Hola PuntoClick, quiero cotizar una pieza a medida." href="https://wa.me/584246798857">Cotizar</a>
+      </div>
+      <p class="note">Precios en dólares. Pregúntanos por pedidos al mayor. Fuera de Punto Fijo el envío se paga aparte (<a href="#envios">ver envíos</a>).</p>
+    </div>
+  </section>
+
+  <!-- PÁGINAS WEB -->
+  <section id="web" class="web">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Páginas web</span>
+          <h2>Páginas web que <span class="layers">te traen clientes</span></h2>
+          <p class="sub">Diseñamos la página de tu negocio o de tu curso: rápida, bonita en el celular y con un botón directo a tu WhatsApp. Estas son algunas que ya están en línea.</p>
+          <div class="web-includes"><span>Tu logo y tus colores</span><span>Se ve perfecta en el celular</span><span>Botón de WhatsApp</span><span>Tu propio dominio .com</span><span>Catálogo, precios o planes</span></div>
+        </div>
+      </div>
+
+      <div class="demos">
+        <a class="demo" href="https://annyneuroensena.netlify.app/" target="_blank" rel="noopener">
+          <div class="shot">
+            <div class="top"><i></i><i></i><i></i><span>annyneuroensena.netlify.app</span></div>
+            <img class="real" src="img/demo-anny.jpg" alt="Captura de la página de Anny Hernández, Neuro Action" loading="lazy">
+          </div>
+          <div class="demo-body">
+            <small>Página de ventas · Coach</small>
+            <h3>Anny Hernández · Neuro Action</h3>
+            <p>Landing para vender un programa de inglés de 6 meses: metodología por fases, testimonios, preguntas frecuentes y planes con pago por WhatsApp, PayPal y Binance.</p>
+            <ul><li>Planes y precios</li><li>Testimonios</li><li>Preguntas frecuentes</li></ul>
+            <span class="demo-go">Ver página <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="demo" href="https://powerneuroensena.netlify.app/" target="_blank" rel="noopener">
+          <div class="shot">
+            <div class="top"><i></i><i></i><i></i><span>powerneuroensena.netlify.app</span></div>
+            <div class="view v-power">
+              <span class="k">Power Week · 7 días</span>
+              <span class="t">Pronuncia y <em>hazte entender</em> a la primera</span>
+              <span class="wk"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span>
+              <span class="bt">Inscribirme</span>
+            </div>
+          </div>
+          <div class="demo-body">
+            <small>Lanzamiento · Curso corto</small>
+            <h3>Power Week · Pronunciación</h3>
+            <p>Página de lanzamiento para un programa intensivo de 7 días: problemas del cliente, solución, qué incluye y dos planes con métodos de pago seguros.</p>
+            <ul><li>Lanzamiento</li><li>2 planes</li><li>Pagos</li></ul>
+            <span class="demo-go">Ver página <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+
+        <a class="demo" href="https://recargasyupi.com/" target="_blank" rel="noopener">
+          <div class="shot">
+            <div class="top"><i></i><i></i><i></i><span>recargasyupi.com</span></div>
+            <img class="real" src="img/demo-yupi.jpg" alt="Captura de la tienda Recargas Yupi" loading="lazy">
+          </div>
+          <div class="demo-body">
+            <small>Tienda en línea · E-commerce</small>
+            <h3>Recargas Yupi</h3>
+            <p>Tienda de recargas de juegos, gift cards y suscripciones, con catálogo por categorías, perfil de usuario con puntos e historial, y pago móvil.</p>
+            <ul><li>Catálogo</li><li>Cuentas de usuario</li><li>Dominio propio</li></ul>
+            <span class="demo-go">Ver tienda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </div>
+        </a>
+      </div>
+
+      <div class="web-cta">
+        <div>
+          <h3 style="font-size:1.35rem">¿Quieres la tuya? Te mostramos cómo quedaría antes de pagar.</h3>
+          <p>Mándanos tu logo y a qué se dedica tu negocio. Te enviamos una muestra con tu marca y la publicamos en tu propio dominio. Esta misma página que estás viendo también la hicimos nosotros.</p>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-wa wa" data-msg="Hola PuntoClick, quiero una página web para mi negocio." href="https://wa.me/584246798857">Pide tu muestra</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABAJOS -->
+  <section id="trabajos">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Trabajos recientes</span>
+          <h2>Hecho en PuntoClick</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filtrar trabajos">
+          <button type="button" data-f="all" aria-pressed="true">Todos</button>
+          <button type="button" data-f="lum" aria-pressed="false">Luminosos y letras</button>
+          <button type="button" data-f="lla" aria-pressed="false">Llaveros</button>
+          <button type="button" data-f="pla" aria-pressed="false">Placas y pago móvil</button>
+        </div>
+      </div>
+      <div class="gal">
+        <button type="button" data-c="lum"><img src="img/letras-farmasi.jpg" alt="Letras corpóreas FarmaSí y Cuidado Personal" loading="lazy"><figcaption>FarmaSí</figcaption></button>
+        <button type="button" data-c="lla"><img src="img/llavero-otronivel.jpg" alt="Llaveros de Otro Nivel, maquinaria pesada" loading="lazy"><figcaption>Otro Nivel</figcaption></button>
+        <button type="button" data-c="pla"><img src="img/hablador-dayana.jpg" alt="Hablador de pago móvil para la Dra. Dayana Chirinos" loading="lazy"><figcaption>Dra. Dayana Chirinos</figcaption></button>
+        <button type="button" data-c="lum"><img src="img/logo-ketty.jpg" alt="Logo 3D de la Dra. Ketty Padilla" loading="lazy"><figcaption>Dra. Ketty Padilla</figcaption></button>
+        <button type="button" data-c="lla"><img src="img/llavero-bailaora.jpg" alt="Lote de llaveros Academia Bailaora" loading="lazy"><figcaption>Academia Bailaora</figcaption></button>
+        <button type="button" data-c="pla"><img src="img/placa-abogado.jpg" alt="Placa de escritorio para abogado" loading="lazy"><figcaption>Placa de abogado</figcaption></button>
+        <button type="button" data-c="lum"><img src="img/exhibidor-cachapas.jpg" alt="Exhibidor iluminado de Cachapas La Llanera" loading="lazy"><figcaption>Cachapas La Llanera</figcaption></button>
+        <button type="button" data-c="lla"><img src="img/llavero-nenebarber.jpg" alt="Llavero de Nene Barber Studio" loading="lazy"><figcaption>Nene Barber Studio</figcaption></button>
+        <button type="button" data-c="lum"><img src="img/letras-gemolabs.jpg" alt="Letras corpóreas Gema Labs" loading="lazy"><figcaption>Gema Labs</figcaption></button>
+        <button type="button" data-c="lla"><img src="img/llavero-amaretto.jpg" alt="Llaveros Amaretto Café Licor" loading="lazy"><figcaption>Amaretto Café Licor</figcaption></button>
+        <button type="button" data-c="lla"><img src="img/llavero-paraguana.jpg" alt="Llaveros empaquetados por lotes" loading="lazy"><figcaption>Pedido al mayor</figcaption></button>
+        <button type="button" data-c="lla"><img src="img/llavero-casapiedra.jpg" alt="Llavero Casapiedra Casa de Campo" loading="lazy"><figcaption>Casapiedra</figcaption></button>
+        <button type="button" data-c="pla"><img src="img/placa-aranza-diseno.jpg" alt="Diseño 3D de placa para Inversiones Aranza" loading="lazy"><figcaption>Inversiones Aranza (diseño)</figcaption></button>
+        <button type="button" data-c="pla"><img src="img/hablador-nandos.jpg" alt="Render del hablador de pago móvil para Nando's Food" loading="lazy"><figcaption>Nando's Food (render)</figcaption></button>
+        <button type="button" data-c="pla"><img src="img/hablador-titos.jpg" alt="Render del hablador de pago móvil para Titos Hot Dog" loading="lazy"><figcaption>Titos Hot Dog (render)</figcaption></button>
+        <button type="button" data-c="pla"><img src="img/hablador-puntoclick.jpg" alt="Render del hablador de pago móvil de PuntoClick" loading="lazy"><figcaption>PuntoClick (render)</figcaption></button>
+      </div>
+      <div class="ig-strip">
+        <p><b style="color:var(--text)">Trabajos nuevos todos los días.</b> Lo que sale de la impresora lo subimos primero a Instagram.</p>
+        <a class="btn btn-ghost btn-sm" href="https://www.instagram.com/puntoclickstudio3d/" target="_blank" rel="noopener">@puntoclickstudio3d</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO + ENVÍOS -->
+  <section id="envios" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Cómo trabajamos</span>
+          <h2>Ves tu pieza antes<br>de que exista</h2>
+          <p class="sub">Hacemos tu pedido en Punto Fijo y te lo enviamos a cualquier ciudad de Venezuela. Todo se coordina por WhatsApp.</p>
+        </div>
+        <a class="btn btn-wa wa" data-msg="Hola PuntoClick, estoy en (ciudad) y quiero hacer un pedido con envío." href="https://wa.me/584246798857">Pedir con envío</a>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Nos escribes</h3><p>Tu logo, una foto o la idea, cuántas piezas y en qué ciudad estás.</p></div>
+        <div class="step"><h3>Apruebas el diseño</h3><p>Te mandamos la vista previa en 3D con medidas, colores y precio.</p></div>
+        <div class="step"><h3>Pagas e imprimimos</h3><p>Capa por capa, con los colores de tu marca. Te enviamos fotos mientras se hace.</p></div>
+        <div class="step"><h3>Te lo entregamos</h3><p>En Punto Fijo o bien empacado por envío, con la foto de la guía para rastrearlo.</p></div>
+      </div>
+      <div class="ship">
+        <div><h3>Empresas de envío</h3><p>Enviamos por la que tenga oficina cerca de ti.</p><div class="chips"><span>MRW</span><span>Zoom</span><span>Tealca</span></div></div>
+        <div><h3>Formas de pago</h3><p>El envío lo pagas al retirar tu paquete en la oficina.</p><div class="chips"><span>Pago móvil</span><span>Transferencia</span><span>Dólares</span></div></div>
+        <div><h3>Lo más pedido desde otras ciudades</h3><p>Piezas livianas que viajan bien.</p><div class="chips"><span>Habladores</span><span>Llaveros por docena</span><span>Placas</span><span>Gamer</span></div></div>
+      </div>
+      <div class="proof">
+        <img src="img/placa-aranza-diseno.jpg" alt="Vista previa en 3D de la placa de escritorio para Inversiones Aranza" loading="lazy">
+        <div>
+          <span class="tag">Vista previa real</span>
+          <h3 style="font-size:1.35rem">Así recibió Inversiones Aranza su placa antes de imprimirla</h3>
+          <p>Estrella dorada facetada, nombre en relieve con cara dorada y base azul.</p>
+          <div class="dims"><span><b>24</b> cm largo</span><span><b>3,2</b> cm fondo</span><span><b>10</b> cm alto</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMER -->
+  <section id="gamer" class="gamer">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Zona Gamer</span>
+          <h2 class="g-title">Arma tu <span class="rgb">setup</span> en 3D.</h2>
+          <p class="sub" style="color:#b9b1cc">Soportes, organizadores y letreros luminosos para tu cuarto o tu stream, en el color que quieras y con tu nombre de jugador. PlayStation, Xbox, Switch y PC.</p>
+        </div>
+      </div>
+      <div class="g-grid">
+        <a class="g-card feat wa" data-msg="Hola PuntoClick, quiero cotizar un letrero luminoso con mi gamertag." href="https://wa.me/584246798857">
+          <div><h3>Letrero luminoso con tu gamertag</h3><p>Tu nombre de jugador, el logo de tu canal o tu clan, encendido con luz LED.</p></div>
+          <span class="neon" aria-hidden="true">TU_GAMERTAG</span>
+          <b>Desde $25</b>
+        </a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte para control (desde $8). Mi consola es:" href="https://wa.me/584246798857"><div><h3>Soporte para control</h3><p>PS5 · PS4 · Xbox · Switch Pro</p></div><b>$8</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte para audífonos (desde $10)." href="https://wa.me/584246798857"><div><h3>Soporte para audífonos</h3><p>Despeja el escritorio</p></div><b>$10</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero una torre para controles y audífonos (desde $18)." href="https://wa.me/584246798857"><div><h3>Torre todo en uno</h3><p>Dos controles y audífonos</p></div><b>$18</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte de pared para control o audífonos (desde $8)." href="https://wa.me/584246798857"><div><h3>Soporte de pared</h3><p>Con tornillos o doble faz</p></div><b>$8</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un organizador de juegos (desde $8)." href="https://wa.me/584246798857"><div><h3>Organizador de juegos</h3><p>Cartuchos y memorias</p></div><b>$8</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un llavero gamer con mi nick ($5)." href="https://wa.me/584246798857"><div><h3>Llavero gamer</h3><p>Con tu nick o tu clan</p></div><b>$5</b></a>
+      </div>
+      <div class="bambu">
+        <div><h3>¿Viste otra pieza en Bambu Handy? Te la imprimimos.</h3>
+          <ol><li>Descarga Bambu Handy gratis</li><li>Busca la figura o el accesorio</li><li>Envíanos el link y te damos el precio</li></ol></div>
+        <a class="btn btn-ghost wa" data-msg="Hola PuntoClick, vi esta pieza en Bambu Handy y quiero saber el precio: " href="https://wa.me/584246798857">Enviar link</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGALOS + A MEDIDA -->
+  <section id="regalos">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Regalos y piezas a medida</span>
+          <h2>Algo que no venden<br>en ninguna tienda</h2>
+        </div>
+      </div>
+      <div class="duo">
+        <a class="tile wa" data-msg="Hola PuntoClick, quiero cotizar llaveros personalizados." href="https://wa.me/584246798857">
+          <img src="img/llavero-personalizado.jpg" alt="Llaveros personalizados para un grupo" loading="lazy">
+          <h3>Llaveros personalizados</h3>
+          <p>Para cumpleaños, grupos, retiros, graduaciones y recuerdos de eventos.</p>
+          <span class="price">1 en $5 · 12 en $20</span>
+        </a>
+        <a class="tile wa" data-msg="Hola PuntoClick, quiero cotizar una caja de luz personalizada." href="https://wa.me/584246798857">
+          <img src="img/caja-luz-puntoclick.jpg" alt="Caja de luz redonda iluminada" loading="lazy">
+          <h3>Cajas de luz</h3>
+          <p>Con nombres, frases o el diseño que quieras, para cuartos, oficinas y rincones gamer.</p>
+        </a>
+        <div class="idea-box">
+          <span class="tag" style="margin:0">A medida</span>
+          <h3 style="font-size:1.5rem">¿Tienes otra idea? La imprimimos.</h3>
+          <ul><li>Repuestos que ya no se consiguen</li><li>Soportes y organizadores</li><li>Prototipos para emprendedores</li><li>Trofeos, medallas y recuerdos</li><li>Figuras y decoración</li></ul>
+          <a class="btn btn-blue wa" data-msg="Hola PuntoClick, tengo una idea para imprimir en 3D." href="https://wa.me/584246798857">Cuéntanos tu idea</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉCNICO -->
+  <section id="tecnico" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="tag">Servicio técnico</span>
+          <h2>Tu computadora,<br>como nueva</h2>
+        </div>
+        <a class="btn btn-ghost wa" data-msg="Hola PuntoClick, necesito servicio técnico para mi computadora." href="https://wa.me/584246798857">Pedir diagnóstico</a>
+      </div>
+      <div class="tech">
+        <div><h3>Mantenimiento</h3><p>Limpieza interna y cambio de pasta térmica.</p></div>
+        <div><h3>Formateo</h3><p>Sistema, programas y drivers listos para trabajar.</p></div>
+        <div><h3>Mejoras</h3><p>Disco SSD y más RAM para que vuelva a ir rápido.</p></div>
+        <div><h3>Reparación</h3><p>Diagnóstico y presupuesto antes de reparar.</p></div>
+        <div><h3>Armado de PC gamer</h3><p>Te ayudamos a escoger las piezas y la armamos.</p></div>
+      </div>
+      <div class="soon">
+        <span class="pill">Próximamente</span>
+        <div><h3>Impresión de gran formato</h3><p>Vinil, pendones y publicidad en gran formato para tu negocio.</p></div>
+        <a class="btn btn-ghost btn-sm wa" data-msg="Hola PuntoClick, avísenme cuando tengan impresión de gran formato." href="https://wa.me/584246798857">Avísame</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cta-big">
+      <h2>¿Lo <span class="layers">imprimimos?</span></h2>
+      <p class="sub">Escríbenos con tu idea, tu logo o tu negocio y te respondemos con el diseño y el precio.</p>
+      <div class="ctas">
+        <a class="btn btn-wa wa" data-msg="Hola PuntoClick, quiero cotizar un trabajo." href="https://wa.me/584246798857">Escríbenos por WhatsApp</a>
+        <a class="btn btn-ghost" href="/catalogo/">Ver catálogo</a>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="id">
+        <img src="img/logo-full.png" alt="Logo de PuntoClick Studio 3D">
+        <div><b style="font:700 1.05rem var(--display)">PuntoClick Studio 3D</b><p>Impresión 3D, páginas web y servicio técnico. Punto Fijo, Falcón. Envíos a toda Venezuela.</p></div>
+      </div>
+      <div><h4>WhatsApp</h4><a class="wa" data-msg="Hola PuntoClick, quiero cotizar un trabajo." href="https://wa.me/584246798857">0424-679.88.57</a></div>
+      <div><h4>Instagram</h4><a href="https://www.instagram.com/puntoclickstudio3d/" target="_blank" rel="noopener">@puntoclickstudio3d</a></div>
+      <div><h4>Catálogo</h4><a href="/catalogo/">puntoclick3d.com/catalogo</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="btn btn-wa float wa" data-msg="Hola PuntoClick, quiero cotizar un trabajo." href="https://wa.me/584246798857" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3Z"/></svg>
+  WhatsApp
+</a>
+
+<dialog id="viewer" aria-label="Foto ampliada">
+  <button type="button" id="close">Cerrar ✕</button>
+  <img id="big" src="" alt="">
+  <p id="cap"></p>
+</dialog>
+
+<script>
+var WA='https://wa.me/584246798857';
+document.querySelectorAll('a.wa').forEach(function(a){
+  var m=a.getAttribute('data-msg');
+  a.href=WA+(m?'?text='+encodeURIComponent(m):'');
+  a.target='_blank';a.rel='noopener';
+});
+var fbtns=document.querySelectorAll('.filters button'),items=document.querySelectorAll('.gal button');
+fbtns.forEach(function(b){
+  b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    fbtns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    items.forEach(function(it){it.hidden=!(f==='all'||it.getAttribute('data-c')===f);});
+  });
+});
+var dlg=document.getElementById('viewer'),big=document.getElementById('big'),cap=document.getElementById('cap');
+items.forEach(function(b){
+  b.addEventListener('click',function(){
+    var i=b.querySelector('img');big.src=i.src;big.alt=i.alt;
+    var f=b.querySelector('figcaption');cap.textContent=f?f.textContent:'';
+    if(dlg.showModal)dlg.showModal();
+  });
+});
+document.getElementById('close').addEventListener('click',function(){dlg.close();});
+dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+</script>
+</body>
+</html>
