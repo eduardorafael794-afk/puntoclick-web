@@ -120,7 +120,7 @@ nav a.hl{color:var(--blue-2)}
 .mw-search input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--text);font:500 1rem var(--body);padding:8px 0}
 .mw-search input::placeholder{color:#6f7a90}
 .mw-search .btn{padding:11px 20px}
-.mw-chips{display:flex;gap:8px;margin-top:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.mw-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
 .mw-chips::-webkit-scrollbar{display:none}
 .mw-chip{flex:none;text-decoration:none;font:600 .86rem var(--body);color:#dfe6f2;border:1px solid var(--line-2);background:rgba(255,255,255,.03);border-radius:999px;padding:7px 13px;transition:border-color .2s,background .2s}
 .mw-chip:hover{border-color:var(--blue);background:rgba(47,140,255,.12)}
@@ -131,7 +131,7 @@ nav a.hl{color:var(--blue-2)}
 .mw-app{font-weight:700;font-size:.9rem;color:var(--blue-2);text-decoration:none}
 .mw-app:hover{text-decoration:underline}
 @media (max-width:920px){.mw{justify-self:stretch;max-width:none}.hero-grid{grid-template-areas:"text" "mw" "ctas";row-gap:22px}}
-@media (max-width:520px){.mw{padding:18px}.mw-search .btn{padding:10px 14px}.mw-cta .btn{width:100%}}
+@media (max-width:520px){.mw-chips{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mw-chip{text-align:center;padding:8px 6px;font-size:.84rem}.mw{padding:18px}.mw-search .btn{padding:10px 14px}.mw-cta .btn{width:100%}}
 
 /* marquee */
 .marquee{border-block:1px solid var(--line);padding:22px 0;overflow:hidden;background:rgba(13,17,26,.6)}
