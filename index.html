@@ -246,7 +246,11 @@ nav a.hl{color:var(--blue-2)}
 .g-card:hover{border-color:rgba(182,92,255,.7);transform:translateY(-2px)}
 .g-card h3{font-size:.98rem}
 .g-card p{color:#a89fbe;font-size:.86rem;margin-top:4px}
-.g-card b{font:800 .95rem var(--display);color:#e6cfff;white-space:nowrap}
+.g-card b{font:800 .95rem var(--display);color:#e6cfff;white-space:nowrap;margin-left:auto}
+.g-card:not(.feat){justify-content:flex-start}
+.gi{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:rgba(182,92,255,.15);border:1px solid rgba(182,92,255,.35);color:#e6cfff;flex:none}
+.gi svg{width:26px;height:26px}
+.bambu-dl{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .g-card.feat{grid-column:span 3;background:linear-gradient(120deg,#1b1030,#0b0913 60%);padding:26px}
 .neon{font:800 clamp(1.2rem,3vw,1.8rem) var(--display);color:#fff;text-shadow:0 0 6px #b65cff,0 0 18px #b65cff,0 0 40px #2fe0ff;letter-spacing:.02em}
 .bambu{margin-top:14px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:20px 24px;border-radius:18px;border:1px dashed rgba(182,92,255,.55)}
@@ -608,16 +612,17 @@ dialog p{color:#fff;text-align:center;margin-top:12px;font-weight:600}
           <span class="neon" aria-hidden="true">TU_GAMERTAG</span>
           <b>Desde $25</b>
         </a>
-        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte para control (desde $8). Mi consola es:" href="https://wa.me/584246798857"><div><h3>Soporte para control</h3><p>PS5 · PS4 · Xbox · Switch Pro</p></div><b>$8</b></a>
-        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte para audífonos (desde $10)." href="https://wa.me/584246798857"><div><h3>Soporte para audífonos</h3><p>Despeja el escritorio</p></div><b>$10</b></a>
-        <a class="g-card wa" data-msg="Hola PuntoClick, quiero una torre para controles y audífonos (desde $18)." href="https://wa.me/584246798857"><div><h3>Torre todo en uno</h3><p>Dos controles y audífonos</p></div><b>$18</b></a>
-        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte de pared para control o audífonos (desde $8)." href="https://wa.me/584246798857"><div><h3>Soporte de pared</h3><p>Con tornillos o doble faz</p></div><b>$8</b></a>
-        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un organizador de juegos (desde $8)." href="https://wa.me/584246798857"><div><h3>Organizador de juegos</h3><p>Cartuchos y memorias</p></div><b>$8</b></a>
-        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un llavero gamer con mi nick ($5)." href="https://wa.me/584246798857"><div><h3>Llavero gamer</h3><p>Con tu nick o tu clan</p></div><b>$5</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte para control (desde $8). Mi consola es:" href="https://wa.me/584246798857"><i class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9h4M8 7v4M15 10h.01M18 8h.01"/><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6l-.6 6A3 3 0 0 0 5 18c1 0 1.6-.5 2-1.2L8.6 14h6.8l1.6 2.8c.4.7 1 1.2 2 1.2a3 3 0 0 0 2.9-3.4l-.6-6A4 4 0 0 0 17.3 5Z"/></svg></i><div><h3>Soporte para control</h3><p>PS5 · PS4 · Xbox · Switch Pro</p></div><b>$8</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte para audífonos (desde $10)." href="https://wa.me/584246798857"><i class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2.5" y="14" width="5" height="7" rx="2"/><rect x="16.5" y="14" width="5" height="7" rx="2"/></svg></i><div><h3>Soporte para audífonos</h3><p>Despeja el escritorio</p></div><b>$10</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero una torre para controles y audífonos (desde $18)." href="https://wa.me/584246798857"><i class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 21h12"/><path d="M12 7c-3 0-5 1.5-5 3.5h10C17 8.5 15 7 12 7Z"/><path d="M12 13c-3 0-5 1.5-5 3.5h10c0-2-2-3.5-5-3.5Z"/></svg></i><div><h3>Torre todo en uno</h3><p>Dos controles y audífonos</p></div><b>$18</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un soporte de pared para control o audífonos (desde $8)." href="https://wa.me/584246798857"><i class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v18"/><path d="M4 8h6a3 3 0 0 1 3 3v1"/><path d="M13 12c-3.5 0-5 1.6-5 3.5S9.5 19 13 19s5-1.6 5-3.5-1.5-3.5-5-3.5Z"/></svg></i><div><h3>Soporte de pared</h3><p>Con tornillos o doble faz</p></div><b>$8</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un organizador de juegos (desde $8)." href="https://wa.me/584246798857"><i class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M13 4v16M3 12h18"/></svg></i><div><h3>Organizador de juegos</h3><p>Cartuchos y memorias</p></div><b>$8</b></a>
+        <a class="g-card wa" data-msg="Hola PuntoClick, quiero un llavero gamer con mi nick ($5)." href="https://wa.me/584246798857"><i class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="4.5"/><path d="M11.2 11.2 20 20M17 17l2-2M14.5 14.5l2-2"/></svg></i><div><h3>Llavero gamer</h3><p>Con tu nick o tu clan</p></div><b>$5</b></a>
       </div>
       <div class="bambu">
         <div><h3>¿Viste otra pieza en Bambu Handy? Te la imprimimos.</h3>
-          <ol><li>Descarga Bambu Handy gratis</li><li>Busca la figura o el accesorio</li><li>Envíanos el link y te damos el precio</li></ol></div>
+          <ol><li>Descarga Bambu Handy gratis (Android o iPhone)</li><li>Busca la figura o el accesorio</li><li>Envíanos el link y te damos el precio</li></ol>
+          <div class="bambu-dl"><a class="btn btn-blue btn-sm" href="https://bambulab.com/en/download/app" target="_blank" rel="noopener">⬇ Descargar Bambu Handy</a><a class="btn btn-ghost btn-sm" href="https://makerworld.com/" target="_blank" rel="noopener">Ver modelos en MakerWorld</a></div></div>
         <a class="btn btn-ghost wa" data-msg="Hola PuntoClick, vi esta pieza en Bambu Handy y quiero saber el precio: " href="https://wa.me/584246798857">Enviar link</a>
       </div>
     </div>
