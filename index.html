@@ -9,6 +9,7 @@
 <meta property="og:description" content="Tu marca, en 3D y en línea. Impresión 3D y páginas web en Punto Fijo, con envíos a toda Venezuela.">
 <meta property="og:image" content="img/logo-full.png">
 <meta name="theme-color" content="#06080d">
+<meta name="pc-version" content="202611270409">
 <link rel="icon" href="img/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -779,6 +780,24 @@ items.forEach(function(b){
 });
 document.getElementById('close').addEventListener('click',function(){dlg.close();});
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+
+/* Auto-actualización: si hay una versión nueva publicada, la página se recarga sola */
+(function(){
+  var meta=document.querySelector('meta[name="pc-version"]'); if(!meta||!window.fetch) return;
+  var cur=meta.content, busy=false;
+  function typing(){var q=document.getElementById('mwQ');return q&&document.activeElement===q&&q.value.length>0;}
+  function check(){
+    if(busy||document.hidden) return; busy=true;
+    fetch('/version.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():'';}).then(function(v){
+      busy=false; v=(v||'').trim(); if(!v||v===cur) return;
+      var key='pc-reload-'+v; try{ if(sessionStorage.getItem(key)) return; sessionStorage.setItem(key,'1'); }catch(e){}
+      if(typing()) return;
+      location.replace(location.pathname+'?v='+v+location.hash);
+    }).catch(function(){busy=false;});
+  }
+  check(); setInterval(check,60000);
+  document.addEventListener('visibilitychange',function(){ if(!document.hidden) check(); });
+})();
 </script>
 </body>
 </html>
