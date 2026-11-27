@@ -9,7 +9,7 @@
 <meta property="og:description" content="Tu marca, en 3D. Impresión 3D y páginas web en Punto Fijo, con envíos a toda Venezuela.">
 <meta property="og:image" content="img/logo-full.png">
 <meta name="theme-color" content="#06080d">
-<meta name="pc-version" content="202611271200">
+<meta name="pc-version" content="202611271245">
 <link rel="icon" href="img/logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +53,7 @@ section{padding:104px 0 0}
 
 /* header */
 header{position:sticky;top:0;z-index:20;background:rgba(6,8,13,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:28px;height:66px}
+.bar{display:flex;align-items:center;gap:28px;height:66px;position:relative}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
 .brand img{width:34px;height:34px;border-radius:9px;background:#fff;padding:3px}
 .brand b{font-family:var(--display);font-size:15px;font-weight:800;line-height:1}
@@ -62,6 +62,7 @@ nav{display:flex;gap:24px}
 nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px}
 nav a:hover{color:var(--text)}
 .bar .btn{padding:10px 18px;font-size:15px}
+.menu-btn{display:none;background:none;border:1px solid var(--line-2);color:var(--text);border-radius:999px;padding:9px 16px;font:600 15px var(--body);cursor:pointer}
 
 /* hero */
 .hero{padding:72px 0 0}
@@ -95,10 +96,14 @@ h1 .layers{display:block;padding-bottom:.06em}
 .app:hover{text-decoration:underline}
 
 /* clientes */
-.clients{margin-top:88px;border-block:1px solid var(--line);padding:22px 0;overflow:hidden}
-.clients .wrap{display:flex;align-items:center;gap:20px 36px;flex-wrap:wrap}
-.clients span{color:var(--muted);font-size:15px}
-.clients b{font-weight:600;color:#c9d1de;font-size:16px}
+.clients{margin-top:88px;border-block:1px solid var(--line);padding:20px 0 24px;overflow:hidden}
+.clients p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.track{display:flex;width:max-content;animation:belt 38s linear infinite}
+.track:hover{animation-play-state:paused}
+.belt{display:flex;flex:none}
+.belt b{font-family:var(--display);font-weight:600;font-size:18px;color:#c9d1de;white-space:nowrap;padding:0 22px;position:relative}
+.belt b::after{content:"";position:absolute;right:-3px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--blue)}
+@keyframes belt{to{transform:translateX(-50%)}}
 
 /* productos */
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
@@ -141,6 +146,17 @@ dialog p{text-align:center;margin-top:12px;color:var(--text)}
 .ig{margin-top:24px;color:var(--muted)}
 .ig a{color:var(--blue-2);font-weight:600;text-decoration:none}
 
+/* próximamente */
+.soon{border:1px dashed var(--line-2);border-radius:24px;padding:40px}
+.badge{display:inline-block;background:rgba(47,140,255,.14);color:var(--blue-2);font-weight:600;font-size:14px;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+.soon-list{list-style:none;margin:32px 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.soon-list p{color:var(--muted);font-size:15px;margin-top:4px}
+
+/* atrás */
+.back{position:fixed;left:18px;bottom:18px;z-index:30;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;border:1px solid var(--line-2);background:rgba(12,16,24,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--text);font:600 15px var(--body);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.45);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s}
+.back.show{opacity:1;transform:none;pointer-events:auto}
+.back svg{width:18px;height:18px}
+
 /* web */
 .demos{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 .demo{text-decoration:none;display:block}
@@ -181,15 +197,21 @@ footer a{text-decoration:none;color:var(--text)}
 .float svg{width:28px;height:28px;color:#fff}
 
 @media (max-width:980px){
-  nav{display:none}
+  .menu-btn{display:inline-block}
+  nav{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;gap:0;background:#06080d;box-shadow:0 20px 40px rgba(0,0,0,.6);border-bottom:1px solid var(--line);padding:8px 24px 16px}
+  nav.open{display:flex}
+  nav a{padding:14px 0;font-size:17px;color:var(--text);border-bottom:1px solid var(--line)}
+  nav a:last-child{border-bottom:0}
   .hero-grid{grid-template-columns:1fr;grid-template-areas:"text" "mw" "ctas"}
   .mw{margin-top:36px}
   .products,.gal{grid-template-columns:repeat(2,1fr);gap:18px}
   .demos{grid-template-columns:1fr 1fr}
   .steps{grid-template-columns:1fr 1fr}
   .gamer-list{grid-template-columns:1fr}
+  .soon-list{grid-template-columns:1fr 1fr}
 }
 @media (max-width:600px){
+  .bar{gap:10px}
   body{font-size:16px}
   section{padding-top:80px}
   .hero{padding-top:44px}
@@ -204,10 +226,12 @@ footer a{text-decoration:none;color:var(--text)}
   .demos,.facts{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr;gap:24px}
   .gal{gap:10px}
-  .tech,.tag{padding:26px 22px}
+  .tech,.tag,.soon{padding:26px 22px}
+  .soon-list{grid-template-columns:1fr;gap:18px}
 }
 @media (prefers-reduced-motion:reduce){
-  .print{animation:none}
+  .print,.track{animation:none}
+  .track{flex-wrap:wrap;width:auto}
   *{transition:none!important;scroll-behavior:auto!important}
 }
 </style>
@@ -217,13 +241,15 @@ footer a{text-decoration:none;color:var(--text)}
 <header>
   <div class="wrap bar">
     <a class="brand" href="#top"><img src="img/logo-mark.png" alt=""><span><b>PuntoClick</b><small>Studio 3D</small></span></a>
-    <nav aria-label="Secciones">
+    <nav id="menu" aria-label="Secciones">
       <a href="#productos">Productos</a>
       <a href="#gamer">Gamer</a>
       <a href="#trabajos">Trabajos</a>
       <a href="#web">Páginas web</a>
+      <a href="#pronto">Próximamente</a>
       <a href="/catalogo/">Catálogo</a>
     </nav>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
     <a class="btn btn-wa wa" data-msg="Hola PuntoClick, quiero cotizar" href="https://wa.me/584246798857">Cotizar</a>
   </div>
 </header>
@@ -270,10 +296,8 @@ footer a{text-decoration:none;color:var(--text)}
   </div>
 
   <div class="clients">
-    <div class="wrap">
-      <span>Ya confiaron en nosotros</span>
-      <b>FarmaSí</b><b>Amaretto Café Licor</b><b>Cachapas La Llanera</b><b>Nene Barber Studio</b><b>Casapiedra</b><b>Otro Nivel</b><b>Gema Labs</b><b>Academia Bailaora</b>
-    </div>
+    <p class="wrap">Ya confiaron en nosotros</p>
+    <div class="track" aria-label="Clientes: FarmaSí, Amaretto Café Licor, Cachapas La Llanera, Nene Barber Studio, Casapiedra, Otro Nivel, Gema Labs, Academia Bailaora, Inversiones Aranza, Nando's Food"><div class="belt"><b>FarmaSí</b><b>Amaretto Café Licor</b><b>Cachapas La Llanera</b><b>Nene Barber Studio</b><b>Casapiedra</b><b>Otro Nivel</b><b>Gema Labs</b><b>Academia Bailaora</b><b>Inversiones Aranza</b><b>Nando's Food</b></div><div class="belt" aria-hidden="true"><b>FarmaSí</b><b>Amaretto Café Licor</b><b>Cachapas La Llanera</b><b>Nene Barber Studio</b><b>Casapiedra</b><b>Otro Nivel</b><b>Gema Labs</b><b>Academia Bailaora</b><b>Inversiones Aranza</b><b>Nando's Food</b></div></div>
   </div>
 </section>
 
@@ -354,6 +378,25 @@ footer a{text-decoration:none;color:var(--text)}
     <div class="tag">
       <div><strong>TU_GAMERTAG</strong><p>Letrero luminoso con tu nombre de jugador o el logo de tu canal. Desde $25.</p></div>
       <a class="btn wa" data-msg="Hola PuntoClick, quiero un letrero luminoso con mi gamertag:" href="https://wa.me/584246798857">Pedir mi letrero</a>
+    </div>
+  </div>
+</section>
+
+<section id="pronto">
+  <div class="wrap">
+    <div class="soon">
+      <div class="soon-head">
+        <span class="badge">Próximamente</span>
+        <h2>Recargas, entretenimiento y licencias</h2>
+        <p class="lead">Muy pronto vas a poder comprarlo directo con nosotros, como siempre: por WhatsApp.</p>
+      </div>
+      <ul class="soon-list">
+        <li><h3>Recargas de juegos</h3><p>Diamantes, monedas y pases para tus juegos favoritos.</p></li>
+        <li><h3>Entretenimiento</h3><p>Plataformas de películas, series y música.</p></li>
+        <li><h3>Licencias</h3><p>Programas para tu computadora y tu negocio.</p></li>
+        <li><h3>Suscripciones</h3><p>Renovaciones mensuales sin tarjeta internacional.</p></li>
+      </ul>
+      <a class="btn wa" data-msg="Hola PuntoClick, avísame cuando tengan recargas, licencias y suscripciones." href="https://wa.me/584246798857">Avísame cuando abra</a>
     </div>
   </div>
 </section>
@@ -444,6 +487,8 @@ footer a{text-decoration:none;color:var(--text)}
 
 <a class="float wa" data-msg="Hola PuntoClick, quiero cotizar" href="https://wa.me/584246798857" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5 2.5 1 3 .8 3.6.7.6-.1 1.8-.7 2-1.5.3-.7.3-1.3.2-1.5-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></a>
 
+<button class="back" id="back" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span>Atrás</span></button>
+
 <dialog id="viewer" aria-label="Foto ampliada">
   <button id="close" type="button" aria-label="Cerrar">×</button>
   <img id="big" alt="">
@@ -471,6 +516,30 @@ document.querySelectorAll('.gal button').forEach(function(b){
 });
 document.getElementById('close').addEventListener('click',function(){dlg.close();});
 dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
+
+
+/* Menú del celular */
+(function(){var b=document.getElementById('menuBtn'),n=document.getElementById('menu');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Cerrar':'Menú';});
+  n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){n.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='Menú';});});
+})();
+
+/* Botón Atrás: vuelve a donde estabas antes de tocar un enlace del menú; si no, sube al inicio */
+(function(){
+  var back=document.getElementById('back'),stack=[];
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(){stack.push(window.scrollY);});
+  });
+  function upd(){back.classList.toggle('show',window.scrollY>500);
+    back.querySelector('span').textContent=stack.length?'Atrás':'Inicio';}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+  back.addEventListener('click',function(){
+    var y=stack.length?stack.pop():0;
+    window.scrollTo({top:y,behavior:'smooth'});
+    if(history.replaceState)history.replaceState(null,'',location.pathname+location.search);
+    setTimeout(upd,600);
+  });
+})();
 
 /* Auto-actualización: si hay una versión nueva publicada, la página se recarga sola */
 (function(){
